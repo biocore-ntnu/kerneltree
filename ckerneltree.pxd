@@ -1,3 +1,4 @@
+#include "src/rbtree_augmented.h"
 
 cdef extern from "src/rbtree.h":
 
