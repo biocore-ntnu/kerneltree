@@ -17,12 +17,10 @@ cdef class IntervalTree:
         cdef k.interval_tree_node *n
 
         n = k.interval_tree_iter_first(&self.root, start, end)
-        print("First", n.start, n.last, n.val)
 
         while (n):
-            print("Are we ever here?")
+            print("Once!", n.start, n.last, n.val)
             n = k.interval_tree_iter_next(n, start, end)
-            print("Next", n.start, n.last, n.val)
 
 
     cpdef add(self, unsigned long start, unsigned long end, int value):

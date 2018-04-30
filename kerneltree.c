@@ -1082,12 +1082,11 @@ int __pyx_module_is_main_kerneltree = 0;
 static PyObject *__pyx_builtin_TypeError;
 static const char __pyx_k_add[] = "add";
 static const char __pyx_k_end[] = "end";
-static const char __pyx_k_Next[] = "Next";
+static const char __pyx_k_Once[] = "Once!";
 static const char __pyx_k_file[] = "file";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_First[] = "First";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_start[] = "start";
 static const char __pyx_k_value[] = "value";
@@ -1103,12 +1102,9 @@ static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_print_region[] = "print_region";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_Are_we_ever_here[] = "Are we ever here?";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
-static PyObject *__pyx_kp_s_Are_we_ever_here;
-static PyObject *__pyx_n_s_First;
-static PyObject *__pyx_n_s_Next;
+static PyObject *__pyx_kp_s_Once;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_add;
 static PyObject *__pyx_n_s_cline_in_traceback;
@@ -1292,99 +1288,60 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_print_region(struct __pyx_o
  *         cdef k.interval_tree_node *n
  * 
  *         n = k.interval_tree_iter_first(&self.root, start, end)             # <<<<<<<<<<<<<<
- *         print("First", n.start, n.last, n.val)
- * 
- */
-  __pyx_v_n = interval_tree_iter_first((&__pyx_v_self->root), __pyx_v_start, __pyx_v_end);
-
-  /* "kerneltree.pyx":20
- * 
- *         n = k.interval_tree_iter_first(&self.root, start, end)
- *         print("First", n.start, n.last, n.val)             # <<<<<<<<<<<<<<
  * 
  *         while (n):
  */
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_n->start); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_n->last); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_n->val); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = PyTuple_New(4); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 20, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_INCREF(__pyx_n_s_First);
-  __Pyx_GIVEREF(__pyx_n_s_First);
-  PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_n_s_First);
-  __Pyx_GIVEREF(__pyx_t_1);
-  PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_t_2);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_8, 3, __pyx_t_5);
-  __pyx_t_1 = 0;
-  __pyx_t_2 = 0;
-  __pyx_t_5 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_8) < 0) __PYX_ERR(1, 20, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __pyx_v_n = interval_tree_iter_first((&__pyx_v_self->root), __pyx_v_start, __pyx_v_end);
 
-  /* "kerneltree.pyx":22
- *         print("First", n.start, n.last, n.val)
+  /* "kerneltree.pyx":21
+ *         n = k.interval_tree_iter_first(&self.root, start, end)
  * 
  *         while (n):             # <<<<<<<<<<<<<<
- *             print("Are we ever here?")
+ *             print("Once!", n.start, n.last, n.val)
  *             n = k.interval_tree_iter_next(n, start, end)
  */
   while (1) {
     __pyx_t_9 = (__pyx_v_n != 0);
     if (!__pyx_t_9) break;
 
-    /* "kerneltree.pyx":23
+    /* "kerneltree.pyx":22
  * 
  *         while (n):
- *             print("Are we ever here?")             # <<<<<<<<<<<<<<
+ *             print("Once!", n.start, n.last, n.val)             # <<<<<<<<<<<<<<
  *             n = k.interval_tree_iter_next(n, start, end)
- *             print("Next", n.start, n.last, n.val)
+ * 
  */
-    if (__Pyx_PrintOne(0, __pyx_kp_s_Are_we_ever_here) < 0) __PYX_ERR(1, 23, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_n->start); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_n->last); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_n->val); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_8 = PyTuple_New(4); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 22, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_8);
+    __Pyx_INCREF(__pyx_kp_s_Once);
+    __Pyx_GIVEREF(__pyx_kp_s_Once);
+    PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_kp_s_Once);
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_8, 2, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_8, 3, __pyx_t_5);
+    __pyx_t_1 = 0;
+    __pyx_t_2 = 0;
+    __pyx_t_5 = 0;
+    if (__Pyx_PrintOne(0, __pyx_t_8) < 0) __PYX_ERR(1, 22, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-    /* "kerneltree.pyx":24
+    /* "kerneltree.pyx":23
  *         while (n):
- *             print("Are we ever here?")
+ *             print("Once!", n.start, n.last, n.val)
  *             n = k.interval_tree_iter_next(n, start, end)             # <<<<<<<<<<<<<<
- *             print("Next", n.start, n.last, n.val)
+ * 
  * 
  */
     __pyx_v_n = interval_tree_iter_next(__pyx_v_n, __pyx_v_start, __pyx_v_end);
-
-    /* "kerneltree.pyx":25
- *             print("Are we ever here?")
- *             n = k.interval_tree_iter_next(n, start, end)
- *             print("Next", n.start, n.last, n.val)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    __pyx_t_8 = __Pyx_PyInt_From_unsigned_long(__pyx_v_n->start); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_5 = __Pyx_PyInt_From_unsigned_long(__pyx_v_n->last); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_n->val); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 25, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_INCREF(__pyx_n_s_Next);
-    __Pyx_GIVEREF(__pyx_n_s_Next);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_Next);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_8);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_t_5);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_t_2);
-    __pyx_t_8 = 0;
-    __pyx_t_5 = 0;
-    __pyx_t_2 = 0;
-    if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 25, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
   /* "kerneltree.pyx":15
@@ -1498,7 +1455,7 @@ static PyObject *__pyx_pf_10kerneltree_12IntervalTree_2print_region(struct __pyx
   return __pyx_r;
 }
 
-/* "kerneltree.pyx":28
+/* "kerneltree.pyx":26
  * 
  * 
  *     cpdef add(self, unsigned long start, unsigned long end, int value):             # <<<<<<<<<<<<<<
@@ -1527,15 +1484,15 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   if (unlikely(__pyx_skip_dispatch)) ;
   /* Check if overridden in Python */
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 28, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_add); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_10kerneltree_12IntervalTree_5add)) {
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 28, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyInt_From_unsigned_long(__pyx_v_start); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 26, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyInt_From_unsigned_long(__pyx_v_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 28, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_unsigned_long(__pyx_v_end); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 26, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 28, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 26, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_6 = __pyx_t_1; __pyx_t_7 = NULL;
@@ -1553,7 +1510,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_4, __pyx_t_5};
-        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 28, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -1564,7 +1521,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[4] = {__pyx_t_7, __pyx_t_3, __pyx_t_4, __pyx_t_5};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 28, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -1573,7 +1530,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 28, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         if (__pyx_t_7) {
           __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -1587,7 +1544,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
         __pyx_t_3 = 0;
         __pyx_t_4 = 0;
         __pyx_t_5 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 28, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 26, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
@@ -1600,7 +1557,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "kerneltree.pyx":32
+  /* "kerneltree.pyx":30
  *         cdef k.interval_tree_node* node
  * 
  *         node = <k.interval_tree_node*>calloc(1, sizeof(k.interval_tree_node))             # <<<<<<<<<<<<<<
@@ -1609,16 +1566,16 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
  */
   __pyx_v_node = ((struct interval_tree_node *)calloc(1, (sizeof(struct interval_tree_node))));
 
-  /* "kerneltree.pyx":35
+  /* "kerneltree.pyx":33
  * 
  *         # calloc set all to zero
  *         print("node.start", node.start)             # <<<<<<<<<<<<<<
  *         print("node.end", node.last)
  *         print("node.val", node.val)
  */
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->start); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->start); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_s_node_start);
   __Pyx_GIVEREF(__pyx_kp_s_node_start);
@@ -1626,19 +1583,19 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(1, 33, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kerneltree.pyx":36
+  /* "kerneltree.pyx":34
  *         # calloc set all to zero
  *         print("node.start", node.start)
  *         print("node.end", node.last)             # <<<<<<<<<<<<<<
  *         print("node.val", node.val)
  * 
  */
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->last); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 36, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->last); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 36, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_kp_s_node_end);
   __Pyx_GIVEREF(__pyx_kp_s_node_end);
@@ -1646,19 +1603,19 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 36, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 34, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kerneltree.pyx":37
+  /* "kerneltree.pyx":35
  *         print("node.start", node.start)
  *         print("node.end", node.last)
  *         print("node.val", node.val)             # <<<<<<<<<<<<<<
  * 
  *         # these unsigned conversions do not seem to do anything?
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_node->val); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 37, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_node->val); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 37, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_s_node_val);
   __Pyx_GIVEREF(__pyx_kp_s_node_val);
@@ -1666,10 +1623,10 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(1, 37, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(1, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kerneltree.pyx":40
+  /* "kerneltree.pyx":38
  * 
  *         # these unsigned conversions do not seem to do anything?
  *         cdef unsigned long ustart = start             # <<<<<<<<<<<<<<
@@ -1678,7 +1635,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
  */
   __pyx_v_ustart = __pyx_v_start;
 
-  /* "kerneltree.pyx":41
+  /* "kerneltree.pyx":39
  *         # these unsigned conversions do not seem to do anything?
  *         cdef unsigned long ustart = start
  *         cdef unsigned long uend = end             # <<<<<<<<<<<<<<
@@ -1687,7 +1644,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
  */
   __pyx_v_uend = __pyx_v_end;
 
-  /* "kerneltree.pyx":42
+  /* "kerneltree.pyx":40
  *         cdef unsigned long ustart = start
  *         cdef unsigned long uend = end
  *         node.start = ustart             # <<<<<<<<<<<<<<
@@ -1696,7 +1653,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
  */
   __pyx_v_node->start = __pyx_v_ustart;
 
-  /* "kerneltree.pyx":43
+  /* "kerneltree.pyx":41
  *         cdef unsigned long uend = end
  *         node.start = ustart
  *         node.last = uend             # <<<<<<<<<<<<<<
@@ -1705,7 +1662,7 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
  */
   __pyx_v_node->last = __pyx_v_uend;
 
-  /* "kerneltree.pyx":44
+  /* "kerneltree.pyx":42
  *         node.start = ustart
  *         node.last = uend
  *         node.val = value             # <<<<<<<<<<<<<<
@@ -1714,16 +1671,16 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
  */
   __pyx_v_node->val = __pyx_v_value;
 
-  /* "kerneltree.pyx":47
+  /* "kerneltree.pyx":45
  * 
  *         # Values are good in struct are valid
  *         print("node.start", node.start)             # <<<<<<<<<<<<<<
  *         print("node.end", node.last)
  *         print("node.val", node.val)
  */
-  __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->start); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->start); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 47, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_kp_s_node_start);
   __Pyx_GIVEREF(__pyx_kp_s_node_start);
@@ -1731,19 +1688,19 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 47, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 45, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kerneltree.pyx":48
+  /* "kerneltree.pyx":46
  *         # Values are good in struct are valid
  *         print("node.start", node.start)
  *         print("node.end", node.last)             # <<<<<<<<<<<<<<
  *         print("node.val", node.val)
  * 
  */
-  __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->last); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_node->last); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 46, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_s_node_end);
   __Pyx_GIVEREF(__pyx_kp_s_node_end);
@@ -1751,19 +1708,19 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(1, 48, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_2) < 0) __PYX_ERR(1, 46, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "kerneltree.pyx":49
+  /* "kerneltree.pyx":47
  *         print("node.start", node.start)
  *         print("node.end", node.last)
  *         print("node.val", node.val)             # <<<<<<<<<<<<<<
  * 
  *         k.interval_tree_insert(node, &self.root)
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_node->val); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 49, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_node->val); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 49, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_kp_s_node_val);
   __Pyx_GIVEREF(__pyx_kp_s_node_val);
@@ -1771,17 +1728,17 @@ static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(struct __pyx_obj_10kern
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2);
   __pyx_t_2 = 0;
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 49, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(1, 47, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "kerneltree.pyx":51
+  /* "kerneltree.pyx":49
  *         print("node.val", node.val)
  * 
  *         k.interval_tree_insert(node, &self.root)             # <<<<<<<<<<<<<<
  */
   interval_tree_insert(__pyx_v_node, (&__pyx_v_self->root));
 
-  /* "kerneltree.pyx":28
+  /* "kerneltree.pyx":26
  * 
  * 
  *     cpdef add(self, unsigned long start, unsigned long end, int value):             # <<<<<<<<<<<<<<
@@ -1843,17 +1800,17 @@ static PyObject *__pyx_pw_10kerneltree_12IntervalTree_5add(PyObject *__pyx_v_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_end)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 1); __PYX_ERR(1, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 1); __PYX_ERR(1, 26, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_value)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 2); __PYX_ERR(1, 28, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, 2); __PYX_ERR(1, 26, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add") < 0)) __PYX_ERR(1, 28, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add") < 0)) __PYX_ERR(1, 26, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -1862,13 +1819,13 @@ static PyObject *__pyx_pw_10kerneltree_12IntervalTree_5add(PyObject *__pyx_v_sel
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_start = __Pyx_PyInt_As_unsigned_long(values[0]); if (unlikely((__pyx_v_start == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(1, 28, __pyx_L3_error)
-    __pyx_v_end = __Pyx_PyInt_As_unsigned_long(values[1]); if (unlikely((__pyx_v_end == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(1, 28, __pyx_L3_error)
-    __pyx_v_value = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_value == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 28, __pyx_L3_error)
+    __pyx_v_start = __Pyx_PyInt_As_unsigned_long(values[0]); if (unlikely((__pyx_v_start == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(1, 26, __pyx_L3_error)
+    __pyx_v_end = __Pyx_PyInt_As_unsigned_long(values[1]); if (unlikely((__pyx_v_end == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(1, 26, __pyx_L3_error)
+    __pyx_v_value = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_value == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 26, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 28, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(1, 26, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("kerneltree.IntervalTree.add", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1887,7 +1844,7 @@ static PyObject *__pyx_pf_10kerneltree_12IntervalTree_4add(struct __pyx_obj_10ke
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("add", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_10kerneltree_12IntervalTree_add(__pyx_v_self, __pyx_v_start, __pyx_v_end, __pyx_v_value, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 28, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_10kerneltree_12IntervalTree_add(__pyx_v_self, __pyx_v_start, __pyx_v_end, __pyx_v_value, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2142,9 +2099,7 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_Are_we_ever_here, __pyx_k_Are_we_ever_here, sizeof(__pyx_k_Are_we_ever_here), 0, 0, 1, 0},
-  {&__pyx_n_s_First, __pyx_k_First, sizeof(__pyx_k_First), 0, 0, 1, 1},
-  {&__pyx_n_s_Next, __pyx_k_Next, sizeof(__pyx_k_Next), 0, 0, 1, 1},
+  {&__pyx_kp_s_Once, __pyx_k_Once, sizeof(__pyx_k_Once), 0, 0, 1, 0},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_add, __pyx_k_add, sizeof(__pyx_k_add), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
