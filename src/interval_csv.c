@@ -35,91 +35,21 @@ static void print_nodes(unsigned long start, unsigned long end)
 
 	printf("Tree nodes:");
 	while (n) {
-		printf(" (%lu, %lu)", n->start, n->last);
+		printf(" (%lu, %lu, %f)", n->start, n->last, n->val);
 		n = interval_tree_iter_next(n, start, end);
 	}
 	printf("\n");
 }
 
-/*
- * Find all extents which overlap 'n', calculate the space
- * covered by them and remove those nodes from the tree.
- */
-static unsigned long count_unique_bytes(struct interval_tree_node *n)
-{
-	struct interval_tree_node *tmp;
-	unsigned long wstart = n->start;
-	unsigned long wlast = n->last;
-
-	printf("Count overlaps:");
-
-	do {
-		/*
-		 * Expand our search window based on the lastest
-		 * overlapping extent. Doing this will allow us to
-		 * find all possible overlaps
-		 */
-		if (wstart > n->start)
-			wstart = n->start;
-		if (wlast < n->last)
-			wlast = n->last;
-
-		printf(" (%lu, %lu)", n->start, n->last);
-
-		tmp = n;
-		n = interval_tree_iter_next(n, wstart, wlast);
-
-		interval_tree_remove(tmp, &root);
-		free(tmp);
-	} while (n);
-
-	printf("; wstart: %lu wlast: %lu total: %lu\n", wstart,
-	       wlast, wlast - wstart + 1);
-
-	return wlast - wstart + 1;
-}
-
-/*
- * Get a total count of space covered in this tree, accounting for any
- * overlap by input intervals.
- */
-static void add_unique_intervals(unsigned long *ret_bytes, unsigned long start,
-				 unsigned long end)
-{
-	unsigned long count = 0;
-	struct interval_tree_node *n = interval_tree_iter_first(&root,
-								start, end);
-
-	if (!n)
-		goto out;
-
-	while (n) {
-		/*
-		 * Find all extents which overlap 'n', calculate the space
-		 * covered by them and remove those nodes from the tree.
-		 */
-		count += count_unique_bytes(n);
-
-		/*
-		 * Since count_unique_bytes will be emptying the tree,
-		 * we can grab the first node here
-		 */
-		n = interval_tree_iter_first(&root, start, end);
-	}
-
-out:
-	*ret_bytes = count;
-}
-
-#define LINE_LEN	1024
+#define LINE_LEN	60
 int main(int argc, char **argv)
 {
 	int c, ret;
 	char *filename;
-	char *s1, *s2;
+	char *s1, *s2, *s3;
 	FILE *fp;
 	char line[LINE_LEN];
-	unsigned long unique_space;
+	/* unsigned long unique_space; */
 	unsigned long start = 0;
 	unsigned long end = ULONG_MAX;
 
@@ -158,6 +88,7 @@ int main(int argc, char **argv)
 			ret, filename, strerror(ret));
 	}
 
+
 	while (fgets(line, LINE_LEN, fp)) {
 		struct interval_tree_node *n;
 
@@ -170,27 +101,21 @@ int main(int argc, char **argv)
 
 		s1 = strtok(line, ",");
 		s2 = strtok(NULL, ",");
-		if (!s1 || !s2)
+		s3 = strtok(NULL, ",");
+		if (!s1 || !s2 || !s3)
 			continue;
 
 		n->start = atol(s1);
 		n->last = atol(s2);
-		if (extents) {
-			/*
-			 * in this case n->last was read as an extent
-			 * len, turn it into an offset
-			 */
-			n->last = n->last + n->start - 1;
-		}
+		n->val = atof(s3);
 
 		interval_tree_insert(n, &root);
 	}
 
+	printf("Done building tree");
+
 	print_nodes(start, end);
 	printf("\n");
-
-	add_unique_intervals(&unique_space, start, end);
-	printf("Total nonoverapping space is %lu\n", unique_space);
 
 	ret = 0;
 out:
