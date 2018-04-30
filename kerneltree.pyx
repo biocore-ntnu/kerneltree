@@ -1,29 +1,51 @@
-
 cimport ckerneltree as k
+from libc.stdlib cimport calloc
+
 
 cdef class IntervalTree:
 
     cdef k.rb_root root
 
+
     def __cinit__(self):
 
         self.root = k.rb_root()
 
+
+    cpdef print_region(self, unsigned long start, unsigned long end):
+
+        cdef k.interval_tree_node *n
+
+        n = k.interval_tree_iter_first(&self.root, start, end)
+        print("First", n.start, n.last, n.val)
+
+        while (n):
+            print("Are we ever here?")
+            n = k.interval_tree_iter_next(n, start, end)
+            print("Next", n.start, n.last, n.val)
+
+
     cpdef add(self, unsigned long start, unsigned long end, int value):
 
-        cdef k.interval_tree_node node
+        cdef k.interval_tree_node* node
 
-        node.start=start
-        node.last=end
-        node.val=value
+        node = <k.interval_tree_node*>calloc(1, sizeof(k.interval_tree_node))
 
-        k.interval_tree_insert(&node, &self.root)
+        # calloc set all to zero
+        print("node.start", node.start)
+        print("node.end", node.last)
+        print("node.val", node.val)
 
-    cpdef print_region(self, int start, int end):
+        # these unsigned conversions do not seem to do anything?
+        cdef unsigned long ustart = start
+        cdef unsigned long uend = end
+        node.start = ustart
+        node.last = uend
+        node.val = value
 
-        cdef k.interval_tree_node *n = k.interval_tree_iter_first(&self.root, start, end)
-        print("1", n.start, n.last, n.val)
+        # Values are good in struct are valid
+        print("node.start", node.start)
+        print("node.end", node.last)
+        print("node.val", node.val)
 
-        # while (n):
-        #     print("2", n.start, n.last, n.val)
-        #     n = k.interval_tree_iter_next(n, start, end)
+        k.interval_tree_insert(node, &self.root)
