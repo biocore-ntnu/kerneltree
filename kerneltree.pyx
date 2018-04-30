@@ -1,21 +1,29 @@
-cimport ckerneltree
+cimport ckerneltree as k
 
 cdef class IntervalTree:
 
-    cdef ckerneltree.rb_root root
-    # cdef ckerneltree.rb_node node
+    cdef k.rb_root root
+    # cdef k.rb_node node
 
     def __cinit__(self):
 
-        self.root = ckerneltree.rb_root()
+        self.root = k.rb_root()
         # self.root.node = NULL
 
     cdef add(self, int start, int end, int value):
 
-        cdef ckerneltree.interval_tree_node *n
+        cdef k.interval_tree_node *node
 
-        # n.start = start
-        # n.end = end
-        # n.value = value
+        node.start=start #, last=end, val=value
+        node.last=end
+        node.val=value
 
-        # ckerneltree.interval_tree_insert(n, self.root)
+        k.interval_tree_insert(node, &self.root)
+
+    cpdef print_region(self, int start, int end):
+
+        cdef k.interval_tree_node *n = k.interval_tree_iter_first(&self.root, start, end)
+
+        while (n):
+            print(n.start, n.last, n.val)
+            n = k.interval_tree_iter_next(n, start, end)
