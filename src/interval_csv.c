@@ -13,6 +13,7 @@
 static char *prog = "interval_tree";
 
 static struct rb_root root = RB_ROOT;
+static struct rb_root root2 = RB_ROOT;
 static int extents = 0;
 
 static void usage(void)
@@ -30,7 +31,7 @@ static void usage(void)
 
 static void print_nodes(unsigned long start, unsigned long end)
 {
-	struct interval_tree_node *n = interval_tree_iter_first(&root,
+	struct interval_tree_node *n = interval_tree_iter_first(&root2,
 								start, end);
 
 	printf("Tree nodes:");
@@ -91,8 +92,10 @@ int main(int argc, char **argv)
 
 	while (fgets(line, LINE_LEN, fp)) {
 		struct interval_tree_node *n;
+		struct interval_tree_node *n2;
 
 		n = calloc(1, sizeof(*n));
+		n2 = calloc(1, sizeof(*n2));
 		if (!n) {
 			ret = ENOMEM;
 			fprintf(stderr, "Out of memory.\n");
@@ -109,7 +112,12 @@ int main(int argc, char **argv)
 		n->last = atol(s2);
 		n->val = atof(s3);
 
+		n2->start = atol(s1) + 1;
+		n2->last = atol(s2) + 2;
+		n2->val = atof(s3) + .042;
+
 		interval_tree_insert(n, &root);
+		interval_tree_insert(n2, &root2);
 	}
 
 	printf("Done building tree");

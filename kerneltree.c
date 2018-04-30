@@ -4,6 +4,7 @@
 {
     "distutils": {
         "depends": [
+            "src/interval_tree.h",
             "src/rbtree.h"
         ],
         "include_dirs": [
@@ -11,8 +12,7 @@
         ],
         "name": "kerneltree",
         "sources": [
-            "kerneltree.pyx",
-            "interval_tree.c"
+            "kerneltree.pyx"
         ]
     },
     "module_name": "kerneltree"
@@ -581,6 +581,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #define __PYX_HAVE_API__kerneltree
 /* Early includes */
 #include "src/rbtree.h"
+#include "src/interval_tree.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -789,19 +790,27 @@ static const char *__pyx_f[] = {
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_10kerneltree_KernelTree;
+struct __pyx_obj_10kerneltree_IntervalTree;
 
 /* "kerneltree.pyx":3
- * cimport kerneltree
+ * cimport ckerneltree
  * 
- * cdef class KernelTree:             # <<<<<<<<<<<<<<
- *     cdef rb_root root
+ * cdef class IntervalTree:             # <<<<<<<<<<<<<<
+ * 
+ *     cdef ckerneltree.rb_root root
  */
-struct __pyx_obj_10kerneltree_KernelTree {
+struct __pyx_obj_10kerneltree_IntervalTree {
   PyObject_HEAD
-  rb_root root;
+  struct __pyx_vtabstruct_10kerneltree_IntervalTree *__pyx_vtab;
+  struct rb_root root;
 };
 
+
+
+struct __pyx_vtabstruct_10kerneltree_IntervalTree {
+  PyObject *(*add)(struct __pyx_obj_10kerneltree_IntervalTree *, int, int, int);
+};
+static struct __pyx_vtabstruct_10kerneltree_IntervalTree *__pyx_vtabptr_10kerneltree_IntervalTree;
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -877,6 +886,13 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
+/* RaiseArgTupleInvalid.proto */
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+/* KeywordStringCheck.proto */
+static int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
+
 /* PyObjectCall.proto */
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
@@ -937,6 +953,9 @@ static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_nam
 #define __Pyx_PyObject_GenericGetAttr PyObject_GenericGetAttr
 #endif
 
+/* SetVTable.proto */
+static int __Pyx_SetVtable(PyObject *dict, void *vtable);
+
 /* SetupReduce.proto */
 static int __Pyx_setup_reduce(PyObject* type_obj);
 
@@ -994,9 +1013,12 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
+static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(CYTHON_UNUSED struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self, CYTHON_UNUSED int __pyx_v_start, CYTHON_UNUSED int __pyx_v_end, CYTHON_UNUSED int __pyx_v_value); /* proto*/
+
+/* Module declarations from 'ckerneltree' */
 
 /* Module declarations from 'kerneltree' */
-static PyTypeObject *__pyx_ptype_10kerneltree_KernelTree = 0;
+static PyTypeObject *__pyx_ptype_10kerneltree_IntervalTree = 0;
 #define __Pyx_MODULE_NAME "kerneltree"
 extern int __pyx_module_is_main_kerneltree;
 int __pyx_module_is_main_kerneltree = 0;
@@ -1011,49 +1033,125 @@ static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
+static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_Pickling_of_struct_members_such[] = "Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)";
-static PyObject *__pyx_kp_s_Pickling_of_struct_members_such;
+static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
+static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
+static PyObject *__pyx_n_s_pyx_vtable;
 static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_10kerneltree_10KernelTree___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_KernelTree *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10kerneltree_10KernelTree_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_KernelTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_tp_new_10kerneltree_KernelTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static int __pyx_pf_10kerneltree_12IntervalTree___cinit__(struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10kerneltree_12IntervalTree_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10kerneltree_12IntervalTree_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_10kerneltree_IntervalTree(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 /* Late includes */
 
-/* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
- * def __setstate_cython__(self, __pyx_state):
+/* "kerneltree.pyx":8
+ *     # cdef ckerneltree.rb_node node
+ * 
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ * 
+ *         self.root = ckerneltree.rb_root()
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10kerneltree_10KernelTree_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_10kerneltree_10KernelTree_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
-  PyObject *__pyx_r = 0;
+static int __pyx_pw_10kerneltree_12IntervalTree_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_10kerneltree_12IntervalTree_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  int __pyx_r;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10kerneltree_10KernelTree___reduce_cython__(((struct __pyx_obj_10kerneltree_KernelTree *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
+    __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return -1;}
+  if (unlikely(__pyx_kwds) && unlikely(PyDict_Size(__pyx_kwds) > 0) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__cinit__", 0))) return -1;
+  __pyx_r = __pyx_pf_10kerneltree_12IntervalTree___cinit__(((struct __pyx_obj_10kerneltree_IntervalTree *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10kerneltree_10KernelTree___reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_KernelTree *__pyx_v_self) {
+static int __pyx_pf_10kerneltree_12IntervalTree___cinit__(struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  struct rb_root __pyx_t_1;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "kerneltree.pyx":10
+ *     def __cinit__(self):
+ * 
+ *         self.root = ckerneltree.rb_root()             # <<<<<<<<<<<<<<
+ *         # self.root.node = NULL
+ * 
+ */
+  __pyx_v_self->root = __pyx_t_1;
+
+  /* "kerneltree.pyx":8
+ *     # cdef ckerneltree.rb_node node
+ * 
+ *     def __cinit__(self):             # <<<<<<<<<<<<<<
+ * 
+ *         self.root = ckerneltree.rb_root()
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "kerneltree.pyx":13
+ *         # self.root.node = NULL
+ * 
+ *     cdef add(self, int start, int end, int value):             # <<<<<<<<<<<<<<
+ * 
+ *         cdef ckerneltree.interval_tree_node *n
+ */
+
+static PyObject *__pyx_f_10kerneltree_12IntervalTree_add(CYTHON_UNUSED struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self, CYTHON_UNUSED int __pyx_v_start, CYTHON_UNUSED int __pyx_v_end, CYTHON_UNUSED int __pyx_v_value) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("add", 0);
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10kerneltree_12IntervalTree_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_10kerneltree_12IntervalTree_3__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10kerneltree_12IntervalTree_2__reduce_cython__(((struct __pyx_obj_10kerneltree_IntervalTree *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10kerneltree_12IntervalTree_2__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1061,9 +1159,9 @@ static PyObject *__pyx_pf_10kerneltree_10KernelTree___reduce_cython__(CYTHON_UNU
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1073,14 +1171,14 @@ static PyObject *__pyx_pf_10kerneltree_10KernelTree___reduce_cython__(CYTHON_UNU
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("kerneltree.KernelTree.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kerneltree.IntervalTree.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -1089,34 +1187,34 @@ static PyObject *__pyx_pf_10kerneltree_10KernelTree___reduce_cython__(CYTHON_UNU
 
 /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10kerneltree_10KernelTree_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_10kerneltree_10KernelTree_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_10kerneltree_12IntervalTree_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_10kerneltree_12IntervalTree_5__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10kerneltree_10KernelTree_2__setstate_cython__(((struct __pyx_obj_10kerneltree_KernelTree *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_10kerneltree_12IntervalTree_4__setstate_cython__(((struct __pyx_obj_10kerneltree_IntervalTree *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10kerneltree_10KernelTree_2__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_KernelTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_10kerneltree_12IntervalTree_4__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_10kerneltree_IntervalTree *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__setstate_cython__", 0);
 
   /* "(tree fragment)":4
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1126,22 +1224,24 @@ static PyObject *__pyx_pf_10kerneltree_10KernelTree_2__setstate_cython__(CYTHON_
 
   /* "(tree fragment)":3
  * def __reduce_cython__(self):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("kerneltree.KernelTree.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kerneltree.IntervalTree.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
+static struct __pyx_vtabstruct_10kerneltree_IntervalTree __pyx_vtable_10kerneltree_IntervalTree;
 
-static PyObject *__pyx_tp_new_10kerneltree_KernelTree(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_10kerneltree_IntervalTree(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+  struct __pyx_obj_10kerneltree_IntervalTree *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -1149,10 +1249,16 @@ static PyObject *__pyx_tp_new_10kerneltree_KernelTree(PyTypeObject *t, CYTHON_UN
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
+  p = ((struct __pyx_obj_10kerneltree_IntervalTree *)o);
+  p->__pyx_vtab = __pyx_vtabptr_10kerneltree_IntervalTree;
+  if (unlikely(__pyx_pw_10kerneltree_12IntervalTree_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
   return o;
+  bad:
+  Py_DECREF(o); o = 0;
+  return NULL;
 }
 
-static void __pyx_tp_dealloc_10kerneltree_KernelTree(PyObject *o) {
+static void __pyx_tp_dealloc_10kerneltree_IntervalTree(PyObject *o) {
   #if CYTHON_USE_TP_FINALIZE
   if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -1161,18 +1267,18 @@ static void __pyx_tp_dealloc_10kerneltree_KernelTree(PyObject *o) {
   (*Py_TYPE(o)->tp_free)(o);
 }
 
-static PyMethodDef __pyx_methods_10kerneltree_KernelTree[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_10kerneltree_10KernelTree_1__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_10kerneltree_10KernelTree_3__setstate_cython__, METH_O, 0},
+static PyMethodDef __pyx_methods_10kerneltree_IntervalTree[] = {
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_10kerneltree_12IntervalTree_3__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_10kerneltree_12IntervalTree_5__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_10kerneltree_KernelTree = {
+static PyTypeObject __pyx_type_10kerneltree_IntervalTree = {
   PyVarObject_HEAD_INIT(0, 0)
-  "kerneltree.KernelTree", /*tp_name*/
-  sizeof(struct __pyx_obj_10kerneltree_KernelTree), /*tp_basicsize*/
+  "kerneltree.IntervalTree", /*tp_name*/
+  sizeof(struct __pyx_obj_10kerneltree_IntervalTree), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_10kerneltree_KernelTree, /*tp_dealloc*/
+  __pyx_tp_dealloc_10kerneltree_IntervalTree, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -1200,7 +1306,7 @@ static PyTypeObject __pyx_type_10kerneltree_KernelTree = {
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_10kerneltree_KernelTree, /*tp_methods*/
+  __pyx_methods_10kerneltree_IntervalTree, /*tp_methods*/
   0, /*tp_members*/
   0, /*tp_getset*/
   0, /*tp_base*/
@@ -1210,7 +1316,7 @@ static PyTypeObject __pyx_type_10kerneltree_KernelTree = {
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_10kerneltree_KernelTree, /*tp_new*/
+  __pyx_tp_new_10kerneltree_IntervalTree, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -1262,12 +1368,13 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
-  {&__pyx_kp_s_Pickling_of_struct_members_such, __pyx_k_Pickling_of_struct_members_such, sizeof(__pyx_k_Pickling_of_struct_members_such), 0, 0, 1, 0},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
+  {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
+  {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
   {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
@@ -1289,20 +1396,20 @@ static int __Pyx_InitCachedConstants(void) {
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Pickling_of_struct_members_such); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 2, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
   /* "(tree fragment)":4
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("Pickling of struct members such as self.root must be explicitly requested with @auto_pickle(True)")             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_Pickling_of_struct_members_such); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(0, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
   __Pyx_RefNannyFinishContext();
@@ -1355,14 +1462,17 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_10kerneltree_KernelTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
-  __pyx_type_10kerneltree_KernelTree.tp_print = 0;
-  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10kerneltree_KernelTree.tp_dictoffset && __pyx_type_10kerneltree_KernelTree.tp_getattro == PyObject_GenericGetAttr)) {
-    __pyx_type_10kerneltree_KernelTree.tp_getattro = __Pyx_PyObject_GenericGetAttr;
+  __pyx_vtabptr_10kerneltree_IntervalTree = &__pyx_vtable_10kerneltree_IntervalTree;
+  __pyx_vtable_10kerneltree_IntervalTree.add = (PyObject *(*)(struct __pyx_obj_10kerneltree_IntervalTree *, int, int, int))__pyx_f_10kerneltree_12IntervalTree_add;
+  if (PyType_Ready(&__pyx_type_10kerneltree_IntervalTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_type_10kerneltree_IntervalTree.tp_print = 0;
+  if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_10kerneltree_IntervalTree.tp_dictoffset && __pyx_type_10kerneltree_IntervalTree.tp_getattro == PyObject_GenericGetAttr)) {
+    __pyx_type_10kerneltree_IntervalTree.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttrString(__pyx_m, "KernelTree", (PyObject *)&__pyx_type_10kerneltree_KernelTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_10kerneltree_KernelTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
-  __pyx_ptype_10kerneltree_KernelTree = &__pyx_type_10kerneltree_KernelTree;
+  if (__Pyx_SetVtable(__pyx_type_10kerneltree_IntervalTree.tp_dict, __pyx_vtabptr_10kerneltree_IntervalTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "IntervalTree", (PyObject *)&__pyx_type_10kerneltree_IntervalTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_10kerneltree_IntervalTree) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
+  __pyx_ptype_10kerneltree_IntervalTree = &__pyx_type_10kerneltree_IntervalTree;
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1568,9 +1678,9 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "kerneltree.pyx":1
- * cimport kerneltree             # <<<<<<<<<<<<<<
+ * cimport ckerneltree             # <<<<<<<<<<<<<<
  * 
- * cdef class KernelTree:
+ * cdef class IntervalTree:
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1645,6 +1755,72 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
+}
+
+/* RaiseArgTupleInvalid */
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+/* KeywordStringCheck */
+static int __Pyx_CheckKeywordStrings(
+    PyObject *kwdict,
+    const char* function_name,
+    int kw_allowed)
+{
+    PyObject* key = 0;
+    Py_ssize_t pos = 0;
+#if CYTHON_COMPILING_IN_PYPY
+    if (!kw_allowed && PyDict_Next(kwdict, &pos, &key, 0))
+        goto invalid_keyword;
+    return 1;
+#else
+    while (PyDict_Next(kwdict, &pos, &key, 0)) {
+        #if PY_MAJOR_VERSION < 3
+        if (unlikely(!PyString_Check(key)))
+        #endif
+            if (unlikely(!PyUnicode_Check(key)))
+                goto invalid_keyword_type;
+    }
+    if ((!kw_allowed) && unlikely(key))
+        goto invalid_keyword;
+    return 1;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    return 0;
+#endif
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+    return 0;
 }
 
 /* PyObjectCall */
@@ -1899,6 +2075,24 @@ static PyObject* __Pyx_PyObject_GenericGetAttr(PyObject* obj, PyObject* attr_nam
     return __Pyx_PyObject_GenericGetAttrNoDict(obj, attr_name);
 }
 #endif
+
+/* SetVTable */
+static int __Pyx_SetVtable(PyObject *dict, void *vtable) {
+#if PY_VERSION_HEX >= 0x02070000
+    PyObject *ob = PyCapsule_New(vtable, 0, 0);
+#else
+    PyObject *ob = PyCObject_FromVoidPtr(vtable, 0);
+#endif
+    if (!ob)
+        goto bad;
+    if (PyDict_SetItem(dict, __pyx_n_s_pyx_vtable, ob) < 0)
+        goto bad;
+    Py_DECREF(ob);
+    return 0;
+bad:
+    Py_XDECREF(ob);
+    return -1;
+}
 
 /* SetupReduce */
 static int __Pyx_setup_reduce_is_named(PyObject* meth, PyObject* name) {
