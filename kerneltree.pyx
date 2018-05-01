@@ -2,6 +2,8 @@ from libc.stdlib cimport calloc
 
 cimport ckerneltree as ckt
 
+cimport cython
+
 cdef class IntervalTree:
 
 
@@ -14,25 +16,10 @@ cdef class IntervalTree:
 
     def __dealloc__(self):
 
-        print("Before dealloc")
         ckt.interval_tree_free(&self.root)
-        print("After dealloc")
 
 
-    cpdef add(self, unsigned long start, unsigned long end, int value):
-
-        cdef ckt.interval_tree_node* node
-
-        node = <ckt.interval_tree_node*>calloc(1, sizeof(ckt.interval_tree_node))
-
-        node.start = start
-        node.last = end
-        node.val = value
-
-        ckt.interval_tree_insert(node, &self.root)
-
-
-    cdef cadd(self, unsigned long start, unsigned long end, int value):
+    cpdef add(self, unsigned long start, unsigned long end, long value):
 
         cdef ckt.interval_tree_node* node
 
@@ -45,7 +32,22 @@ cdef class IntervalTree:
         ckt.interval_tree_insert(node, &self.root)
 
 
-    cpdef build_tree(self, long [::1] starts, long [::1] ends, int [::1] values):
+    cdef cadd(self, unsigned long start, unsigned long end, long value):
+
+        cdef ckt.interval_tree_node* node
+
+        node = <ckt.interval_tree_node*>calloc(1, sizeof(ckt.interval_tree_node))
+
+        node.start = start
+        node.last = end
+        node.val = value
+
+        ckt.interval_tree_insert(node, &self.root)
+
+
+    @cython.boundscheck(False)
+    @cython.wraparound(False)
+    cpdef build(self, long [::1] starts, long [::1] ends, long [::1] values):
 
         cdef int nb_elems = len(starts)
         cdef int i = 0;

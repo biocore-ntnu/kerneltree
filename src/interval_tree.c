@@ -30,10 +30,11 @@ void interval_tree_free(const struct rb_root *root){
   /* printf("We are in interval_tree_free\n"); */
   do {
     it_node = rb_entry(temp, struct interval_tree_node, rb);
+    free(it_node);
     /* printf("Freeing it node (%lu, %lu, %d)\n", it_node->start, it_node->last, it_node->val); */
 
     rb_node = rb_next_postorder(rb_node);
-    free(it_node);
+    /* free(it_node); */
     /* it_node = rb_entry(rb_node, struct interval_tree_node, rb); */
     /* printf("Next it node (%lu, %lu, %d)\n", it_node->start, it_node->last, it_node->val); */
     temp = rb_node;
