@@ -47,7 +47,7 @@ it.search(1, 3)
 
 ## Timings
 
-For 10 and 100 million values I also use the helper function it.build(), which iterates over the numpy arrays starts, ends and values to build the tree completely in C-land. The fact that the speedup is negligible is a good reminder Python is fast at iterating.
+For 10 and 100 million values I also use the helper function it.build(), which iterates over the numpy arrays starts, ends and values to build the tree completely in C-land. The fact that the speedup is a mere 20-30% is a good reminder Python is fast at iterating.
 
 #### 1 mill values
 
