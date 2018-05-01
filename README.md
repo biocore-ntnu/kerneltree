@@ -88,4 +88,4 @@ There is nothing preventing the interval tree from taking arbitrary Python objec
 
 [Brent Pedersen's quicksect](https://github.com/brentp/quicksect) - Cython-based implementation of an intervaltree able to store arbitrary Python objects.
 
-[Mark Fasheh's C library](https://github.com/markfasheh/interval-tree) - The library kerneltrees was based on. It is a }
+[Mark Fasheh's C library](https://github.com/markfasheh/interval-tree) - The library kerneltrees was forked from.
