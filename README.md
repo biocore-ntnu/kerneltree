@@ -78,7 +78,9 @@ C based intervaltrees took 03 minutes and 59 seconds to build the tree using the
 
 ## Future work
 
-I would like to make the intervaltrees pickleable, but as they contain loads of pointers implementing a reliable load/save mechanism is not straightforward. This might be a solution though: [Pickle Cython Class with C pointers](https://stackoverflow.com/a/36309509/992687)
+I would like to make the intervaltrees pickleable.
+
+<!-- This might be a solution: [Pickle Cython Class with C pointers](https://stackoverflow.com/a/36309509/992687) -->
 
 There is nothing preventing the interval tree from taking arbitrary Python objects (or rather pointers to PyObjects on the heap), but as I am rather busy and do not need it I am not going to implement it anytime soon. I would not mind maintaing such a feature if you make a PR. Remember to lower the refcount on dealloc though.
 
