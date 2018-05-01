@@ -14,7 +14,7 @@ cdef class IntervalTree:
 
     def __dealloc__(self):
 
-        # print("Before dealloc")
+        print("Before dealloc")
         ckt.interval_tree_free(&self.root)
         print("After dealloc")
 

@@ -10,7 +10,7 @@ import intervaltree as it
 import quicksect as qs
 import kerneltree as kt
 
-total_nb = int(1e5)
+total_nb = int(1e6)
 
 starts = randint(0, int(1e8), total_nb)
 ends = starts + randint(0, 200, total_nb)
@@ -62,6 +62,7 @@ def test_build_kt(starts, ends, values):
     for s, e, v in zip(starts, ends, values):
         kt_it.add(s, e, v)
 
+    print(kt_it.search(100, 10000))
     end = time()
     total = end - start
 
