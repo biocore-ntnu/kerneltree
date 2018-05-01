@@ -20,6 +20,8 @@ cdef extern from "src/interval_tree.h":
         unsigned long last
         int val
 
+    void interval_tree_free(rb_root *root)
+
     void interval_tree_insert(interval_tree_node *node, rb_root *root)
 
     void interval_tree_remove(interval_tree_node *node, rb_root *root)
