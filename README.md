@@ -12,11 +12,9 @@ Andrea Arcangeli, David Woodhouse, Michel Lespinasse, Mark Fasheh, Endre Bakken 
 
 ## License
 
-GPU 2
+GPL 2
 
 ## Install
-
-(Not added yet)
 
 ```bash
 pip install kerneltree
