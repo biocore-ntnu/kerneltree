@@ -51,7 +51,7 @@ it.search(1, 3)
 
 ## Timings
 
-For 10 and 100 million values I also use the helper function it.build(), which iterates over the numpy arrays starts, ends and values to build the tree completely in C-land. The fact that the speedup is a mere 20-30% is a good reminder Python is fast at iterating.
+For 10 and 100 million values I also use the helper function it.build(), which iterates over the numpy arrays starts, ends and values to build the tree completely in C-land. The speedup is a passable 20-30%, but it also means that you do not have to make lists out of the arrays before building the trees, which is another speed win.
 
 #### 1 mill values
 
@@ -84,7 +84,7 @@ C based intervaltrees took 03 minutes and 59 seconds to build the tree using the
 * Add to PyPI
 * Continuous integration
 * Make the intervaltree objects more robust by providing error messages for wrong usage.
-* Have C function that parses bed file and builds tree at the same time, so that the IO and CPU operations are interleaved.
+<!-- * Have C function that parses bed file and builds tree at the same time, so that the IO and CPU operations are interleaved. -->
 
 ## Future work
 
