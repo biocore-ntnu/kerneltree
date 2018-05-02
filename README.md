@@ -88,7 +88,7 @@ C based intervaltrees took 03 minutes and 59 seconds to build the tree using the
 
 ## Future work
 
-I would like to make the intervaltrees pickleable. However, this would require storing the nodes in preorder and building the tree when deserializing, so it will require me to write a bit of C, so it is not on my immediate todo. If I release a second paper on pyranges, this would be a nice addition as it would allow building the GRanges objects in parallel.
+I would like to make the intervaltrees pickleable. However, this would require storing the nodes in preorder and building the tree when deserializing so it is not on my immediate todo. If I release a second paper on pyranges, this would be a nice addition as it would allow building the GRanges objects in parallel.
 
 <!-- This might be a solution: [Pickle Cython Class with C pointers](https://stackoverflow.com/a/36309509/992687) -->
 
