@@ -1,3 +1,4 @@
+*.pyc
 *.o
 *~
 interval-tree-test
