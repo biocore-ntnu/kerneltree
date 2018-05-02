@@ -15,8 +15,6 @@ INTERVAL_TREE_DEFINE(struct interval_tree_node, rb,
 
 /* This should be added to the interval_tree_generic.h I guess. - EBS */
 
-/* After a few thousand nodes it segfaults. Why? Postorder should be correct... */
-
 
 void interval_tree_free(const struct rb_root *root){
 

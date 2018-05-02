@@ -8,7 +8,11 @@ For a sane number of intervals, the other Python and Cython implementations are 
 
 ## Authors
 
+Andrea Arcangeli, David Woodhouse, Michel Lespinasse, Mark Fasheh, Endre Bakken Stovner
 
+## License
+
+GPU 2
 
 ## Install
 
@@ -75,14 +79,20 @@ C based intervaltrees took 05 minutes and 37 seconds to build the tree.
 C based intervaltrees took 03 minutes and 59 seconds to build the tree using the helper function build.
 ```
 
+## Immediate TODO
+
+* Add to PyPI
+* Continuous integration
+* Make the intervaltree objects more robust by providing error messages for wrong usage.
+* Have C function that parses bed file and builds tree at the same time, so that the IO and CPU operations are interleaved.
 
 ## Future work
 
-I would like to make the intervaltrees pickleable.
+I would like to make the intervaltrees pickleable. However, this would require storing the nodes in preorder and building the tree when deserializing, so it will require me to write a bit of C, so it is not on my immediate todo. If I release a second paper on pyranges, this would be a nice addition as it would allow building the GRanges objects in parallel.
 
 <!-- This might be a solution: [Pickle Cython Class with C pointers](https://stackoverflow.com/a/36309509/992687) -->
 
-There is nothing preventing the interval tree from taking arbitrary Python objects (or rather pointers to PyObjects on the heap), but as I am rather busy and do not need it I am not going to implement it anytime soon. I would not mind maintaing such a feature if you make a PR. Remember to lower the refcount on dealloc though.
+There is nothing preventing the interval tree from taking arbitrary Python objects (or rather pointers to PyObjects on the heap), but as I am rather busy and do not need it I am not going to implement it anytime soon. I would not mind maintaing such a feature if you make a PR.
 
 ## See also
 

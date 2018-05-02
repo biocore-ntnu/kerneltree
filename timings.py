@@ -87,6 +87,7 @@ def test_build_kt_helper(starts, ends, values):
 
     minutes, seconds = total_dt.strftime('%M\t%S\n').split()
 
+    print(kt_it.search())
     print("C based intervaltrees took", minutes, "minutes and", seconds, "seconds to build the tree using the helper function build.")
 
 print("Starting to build.")
