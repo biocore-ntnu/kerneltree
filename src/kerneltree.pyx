@@ -1,6 +1,6 @@
 from libc.stdlib cimport calloc
 
-cimport ckerneltree as ckt
+cimport src.ckerneltree as ckt
 
 cimport cython
 
