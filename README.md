@@ -1,3 +1,5 @@
+(*This project is likely superseded by https://github.com/endrebak/ncls*)
+
 # kerneltree
 
 Ultrafast interval tree implementation stolen from the kernel, modified and wrapped for Python.
