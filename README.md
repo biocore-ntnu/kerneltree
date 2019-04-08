@@ -1,4 +1,4 @@
-(*This project is likely superseded by https://github.com/endrebak/ncls*)
+# (*This project is superseded by https://github.com/endrebak/ncls as it is much, much faster. This library is therefore not getting anymore love from me.*)
 
 # kerneltree
 
